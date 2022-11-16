@@ -1,0 +1,22 @@
+{% extends "mainapp/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% include "mainapp/nav.html" %}
+<br>
+<h3 class="text-center">Register</h3>
+    <div class="container pb-5">
+        <br><br>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{form|crispy}}
+                    </div>
+                    <button type="submit" class="btn btn-success">Register</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+{% include "mainapp/footer.html" %}
+{% endblock content %}

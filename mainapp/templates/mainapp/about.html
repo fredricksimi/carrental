@@ -1,0 +1,58 @@
+{% extends "mainapp/base.html" %}
+{% block content %}
+{% include "mainapp/nav.html" %}
+<style>
+    .aboutus_page {
+        background-image: url(../../static/images/aboutus-page-header-img.jpg);
+    }
+    .page-header {
+        /* background-image: url(../images/listing-page-header-img.jpg); */
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 0 none;
+        margin: 0 auto;
+        padding: 0;
+        position: relative;
+    }
+    .page-header_wrap {
+        padding: 60px 0;
+        position: relative;
+        text-align: center;
+    }
+    .page-heading {
+        z-index: 1;
+        position: relative;
+    }
+    .dark-overlay {
+        background: rgba(0, 0, 0, 0.75) none repeat scroll 0 0;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+</style>
+<section class="page-header aboutus_page">
+    <div class="container">
+      <div class="page-header_wrap">
+        <div class="page-heading">
+          <h1 class="text-white">About Us </h1>
+        </div>
+      </div>
+    </div>
+    <!-- Dark Overlay-->
+    <div class="dark-overlay"></div>
+  </section>
+<div class="container">
+    <div class="row py-5">
+        <div class="col-md-10 mx-auto">
+            <h1 class="text-center pb-3" style="font-weight:bold">About Us</h1>
+            <p class="text-center">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat
+            </p>    
+        </div>
+    </div>
+</div>
+{% include "mainapp/footer.html" %}
+{% endblock content %}

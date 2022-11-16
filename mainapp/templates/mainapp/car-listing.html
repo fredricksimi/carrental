@@ -1,0 +1,95 @@
+{% extends "mainapp/base.html" %}
+{% block content %}
+{% include "mainapp/nav.html" %}
+<style>
+    .aboutus_page {
+        background-image: url(../../static/images/listing-page-header-img.jpg);
+    }
+    .page-header {
+        /* background-image: url(../images/listing-page-header-img.jpg); */
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 0 none;
+        margin: 0 auto;
+        padding: 0;
+        position: relative;
+    }
+    .page-header_wrap {
+        padding: 60px 0;
+        position: relative;
+        text-align: center;
+    }
+    .page-heading {
+        z-index: 1;
+        position: relative;
+    }
+    .dark-overlay {
+        background: rgba(0, 0, 0, 0.75) none repeat scroll 0 0;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+</style>
+<section class="page-header aboutus_page">
+    <div class="container">
+      <div class="page-header_wrap">
+        <div class="page-heading">
+          <h1 class="text-white">Car Listing </h1>
+        </div>
+      </div>
+    </div>
+    <!-- Dark Overlay-->
+    <div class="dark-overlay"></div>
+  </section>
+<div class="container">
+    <form class="pb-4" method="GET" action="{% url 'mainapp:search' %}">
+        {% csrf_token %}
+        <div class="row py-5 d-flex align-items-end">
+            <div class="col-md-3 d-flex justify-content-center"><i class="fas fa-filter mt-1"></i> &nbsp;&nbsp;<h5 style="font-weight:bold">Find Your Car</h5></div>
+            <div class="col-md-3">
+                <label for="brand" style="font-weight:bold">Select Brand</label>
+                <select class="form-control" name="brandname">
+                    {% for brand in brands %}
+                    <option value="{{brand}}">{{brand}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="fuel" style="font-weight:bold">Select Fuel Type</label>
+                <select class="form-control" name="fuelname">
+                    {% for fuel in fueltype %}
+                    <option value="{{fuel}}">{{fuel}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="submit" class="btn btn-danger" value="Search Car">
+            </div>
+        </div>
+    </form>
+    <div class="card-group pb-5">
+        {% for car in cars %}
+        <div class="card mx-2">
+            <a href="{% url 'mainapp:car-detail' car.id %}"><img src="{{car.image.url}}" class="card-img-top" alt="..."></a>
+            <div class="d-flex justify-content-around" style="background-color:black">
+                <span class="py-3 text-white"><i class="fas fa-car"></i> {{car.fuel_type}}</span>
+                <span class="py-3 text-white"><i class="fas fa-calendar-alt"></i> {{car.model_year}} model</span>
+                <span class="py-3 text-white"><i class="fas fa-user"></i> {{car.seating_capacity}} seats</span>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between pb-3">
+                    <a href="{% url 'mainapp:car-detail' car.id %}"><h5 class="card-title">{{car.vehicle_title}}</h5></a>
+                    <h5 class="card-title text-muted">${{car.price_per_day}} per day</h5>
+                </div>
+                <p class="card-text">{{car.vehicle_overview}}</p>
+                <p class="card-text"><small class="text-muted">Last updated {{car.updation_date}}</small></p>
+            </div>
+        </div>  
+        {% endfor %}
+    </div>
+</div>
+{% include "mainapp/footer.html" %}
+{% endblock content %}

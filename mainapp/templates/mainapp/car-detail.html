@@ -1,0 +1,118 @@
+{% extends "mainapp/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% include "mainapp/nav.html" %}
+<style>
+    .aboutus_page {
+        background-image: url(../../static/images/listing-page-header-img.jpg);
+    }
+    .page-header {
+        /* background-image: url(../images/listing-page-header-img.jpg); */
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 0 none;
+        margin: 0 auto;
+        padding: 0;
+        position: relative;
+    }
+    .page-header_wrap {
+        padding: 60px 0;
+        position: relative;
+        text-align: center;
+    }
+    .page-heading {
+        z-index: 1;
+        position: relative;
+    }
+    .dark-overlay {
+        background: rgba(0, 0, 0, 0.75) none repeat scroll 0 0;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    .main_features ul li {
+        border: 1px solid #dcd9d9;
+        float: left;
+        list-style: outside none none;
+        margin: 0 17px 0 0;
+        min-height: 113px;
+        min-width: 123px;
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+        $("#button2").click(function(){
+            $("#vehicle-overview").hide();
+            $("#accessories").show();
+            $(".potato2").addClass('active')
+            $('.potato').removeClass('active')
+        });
+        $("#button1").click(function(){
+            $("#accessories").hide();
+            $("#vehicle-overview").show();
+            $(".potato2").removeClass('active')
+            $('.potato').addClass('active')
+        });
+    });
+</script>
+<div class="container">
+    <div class="pt-5">
+        <div class="row">
+            <div class="d-flex justify-content-between">
+                <h1>{{car.vehicle_title}}</h1>
+                <h2><span style="color: red;">${{car.price_per_day}}</span> per day</h2>
+            </div>
+            <div class="main_features pt-5">
+                <ul>
+                    <li> <i class="fa fa-calendar" aria-hidden="true" style="font-size:36px;color:#c0c0c0;margin:0px;"></i>
+                        <h5 class="pt-2" style="font-weight: 300;">{{car.model_year}}</h5>
+                        <p style="font-size:11px;color:red;">Reg.Year</p>
+                    </li>
+                    <li> <i class="fa fa-cogs" aria-hidden="true" style="font-size:36px;color:#c0c0c0;margin:0px;"></i>
+                        <h5 class="pt-2" style="font-weight: 300;">{{car.fuel_type}}</h5>
+                        <p style="font-size:11px;color:red;">Fuel Type</p>
+                    </li>
+                    <li> <i class="fa fa-user-plus" aria-hidden="true" style="font-size:36px;color:#c0c0c0;margin:0px;"></i>
+                        <h5 class="pt-2" style="font-weight: 300;">{{car.seating_capacity}}</h5>
+                        <p style="font-size:11px;color:red;">Seats</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8 pt-2">
+                <div class="py-5">
+                    <ul class="nav nav-tabs pb-3">
+                        <li class="nav-item">
+                            <a class="nav-link potato active" id="button1" aria-current="page">Vehicle Overview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link potato2" id="button2">Accessories</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content pt-3" style="border:1px solid rgb(134, 134, 134); padding: 20px;">
+                        <div class="tab-pane active" id="vehicle-overview">
+                            <p class="py-3">{{car.vehicle_overview}}</p>
+                        </div>
+                        <div class="tab-pane" id="accessories">
+                            <p class="py-3">fffff</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <input type="submit" class="btn btn-danger"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+{% include "mainapp/footer.html" %}
+{% endblock content %}

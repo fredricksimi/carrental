@@ -1,0 +1,19 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+{% include "mainapp/nav.html" %}
+<div class="container">
+    <div class="row">
+        <h3 class="text-center py-3">My Bookings</h3>
+        <div class="col-md-7 mx-auto">
+            {% for bookings in user_bookings %}
+            <div class="py-3">
+                <h3>{{ forloop.counter }}. <a href="{% url 'mainapp:car-detail' bookings.vehicle.id %}">{{bookings.vehicle.vehicle_title}} - {{bookings.vehicle.model_year}} model - {{bookings.vehicle.seating_capacity}} seats</a></h3>
+                <h5>From: {{bookings.from_date}} To: {{bookings.to_date}}</h5>
+                <p>{{bookings.vehicle.vehicle_overview}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
