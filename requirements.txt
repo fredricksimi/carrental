@@ -10,6 +10,7 @@ django-allauth==0.51.0
 django-crispy-forms==1.14.0
 fontawesomefree==5.15.4
 idna==3.4
+mysqlclient==2.1.1
 oauthlib==3.2.2
 Pillow==9.3.0
 pycparser==2.21
