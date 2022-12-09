@@ -5,7 +5,7 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{% static 'images/banner-image.jpg' %}" class="d-block w-100" alt="...">
+            <img src="{% static 'images/back1.png' %}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h1>FIND THE RIGHT<br>CAR FOR YOU</h1>
                 <p>We have more than a thousand cars for you to choose.</p>
@@ -23,44 +23,26 @@
 </div>
 <div class="container pb-5">
     <div class="card-group">
+        {% for car in cars %}
         <div class="card mx-2">
-            <img src="{% static 'images/mclaren.jpg' %}" class="card-img-top" alt="...">
+            <a href="{% url 'mainapp:car-detail' car.id %}">
+            <img src="{{car.image.url}}" class="card-img-top" alt="..."></a>
             <div class="d-flex justify-content-around" style="background-color:black">
-                <span class="py-3 text-white"><i class="fas fa-car"></i> erer</span>
-                <span class="py-3 text-white"><i class="fas fa-calendar-alt"></i> erer</span>
-                <span class="py-3 text-white"><i class="fas fa-user"></i> erer</span>
+                <span class="py-3 text-white"><i class="fas fa-car"></i> {{car.vehicle_brand}}</span>
+                <span class="py-3 text-white"><i class="fas fa-calendar-alt"></i> {{car.model_year}}</span>
+                <span class="py-3 text-white"><i class="fas fa-user"></i> {{car.seating_capacity}}</span>
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between pb-3">
-                    <h5 class="card-title">BMW , Test Demoy</h5>
+                    <a href="{% url 'mainapp:car-detail' car.id %}"><h5 class="card-title">{{car.vehicle_title}}</h5></a>
                     <h5 class="card-title text-muted">Card title</h5>
                 </div>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <a href="{% url 'mainapp:car-detail' car.id %}"><p class="card-text">{{car.vehicle_overview}}</p></a>
+                <p class="card-text"><small class="text-muted">Last updated {{car.registration_date}}</small></p>
             </div>
         </div>
-        <div class="card mx-2">
-            <img src="{% static 'images/mclaren.jpg' %}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="d-flex justify-content-around">
-                    <h5 class="card-title">Card title</h5>
-                    <h5 class="card-title">Card title</h5>
-                </div>
-                
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card mx-2">
-            <img src="{% static 'images/mclaren.jpg' %}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
+        {% endfor %}
+        
     </div>
 </div>
 </div>

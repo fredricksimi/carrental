@@ -33,7 +33,9 @@ def logout_view(request):
     return redirect('mainapp:home')
 
 def home_view(request):
-    return render(request, 'mainapp/index.html')
+    cars = Vehicle.objects.all()[:3]
+    context = {'cars':cars}
+    return render(request, 'mainapp/index.html', context)
 
 def about_view(request):
     return render(request, 'mainapp/about.html')

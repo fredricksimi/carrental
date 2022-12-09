@@ -74,7 +74,7 @@
     <div class="card-group pb-5">
         {% for car in vehicles %}
         <div class="py-3">
-            <h3>{{ forloop.counter }}. <a href="">{{car.vehicle_title}} - {{car.model_year}} model - {{car.seating_capacity}} seats</a></h3>
+            <h3>{{ forloop.counter }}. <a href="{% url 'mainapp:car-detail' car.id %}">{{car.vehicle_title}} - {{car.model_year}} model - {{car.seating_capacity}} seats</a></h3>
             <p>{{car.vehicle_overview}}</p>
         </div>
         {% endfor %}

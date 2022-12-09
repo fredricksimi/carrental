@@ -63,6 +63,8 @@ class VehicleImage(models.Model):
 
 class BookVehicle(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    customer_email = models.EmailField()
+    customer_tel = models.CharField(max_length=20)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     from_date = models.DateField()
     to_date = models.DateField()

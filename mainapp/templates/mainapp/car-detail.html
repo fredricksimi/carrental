@@ -98,7 +98,39 @@
                             <p class="py-3">{{car.vehicle_overview}}</p>
                         </div>
                         <div class="tab-pane" id="accessories">
-                            <p class="py-3">fffff</p>
+                            {% if car.air_conditioner %}
+                            <p><i class="fa fa-check"></i> Air Conditioner</p>
+                            {% endif %}
+                            {% if car.power_door_locks %}
+                            <p><i class="fa fa-check"></i> Power Door Locks</p>
+                            {% endif %}
+                            {% if car.antilock_braking_system %}
+                            <p><i class="fa fa-check"></i> Antilock Braking System</p>
+                            {% endif %}
+                            {% if car.brake_assist %}
+                            <p><i class="fa fa-check"></i> Brake Assist</p>
+                            {% endif %}
+                            {% if car.power_steering %}
+                            <p><i class="fa fa-check"></i> Power Steering</p>
+                            {% endif %}
+                            {% if car.driver_airbag %}
+                            <p><i class="fa fa-check"></i> Driver Airbag</p>
+                            {% endif %}
+                            {% if car.power_windows %}
+                            <p><i class="fa fa-check"></i> Power Windows</p>
+                            {% endif %}
+                            {% if car.cd_player %}
+                            <p><i class="fa fa-check"></i> CD Player</p>
+                            {% endif %}
+                            {% if car.central_locking %}
+                            <p><i class="fa fa-check"></i> Central Locking</p>
+                            {% endif %}
+                            {% if car.crash_sensor %}
+                            <p><i class="fa fa-check"></i> Crash Sensor</p>
+                            {% endif %}
+                            {% if car.leather_seats %}
+                            <p><i class="fa fa-check"></i> Leather Seats</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
